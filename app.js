@@ -1,9 +1,42 @@
 class App {
   constructor(selectors) {
     this.dinos = []
+    this.carnivoreDinos = []
+    this.herbivoreDinos = []
+    this.omnivoreDinos = []
     this.max = 0
     this.list = document
       .querySelector(selectors.listSelector)
+
+    document
+      .querySelector('.menu-text')
+      .addEventListener('click', this.addAllList.bind(this))
+
+    document
+      .querySelector('.carnivore-menu')
+      .addEventListener('click', this.addCarnivoreList.bind(this))
+
+    document
+      .querySelector('.herbivore-menu')
+      .addEventListener('click', this.addHerbivoreList.bind(this))
+
+    document
+      .querySelector('.omnivore-menu')
+      .addEventListener('click', this.addOmnivoreList.bind(this))
+
+
+
+    this.carnivoreList = document
+      .querySelector(selectors.carnivoreSelector)
+    
+    this.herbivoreList = document
+      .querySelector(selectors.herbivoreSelector)
+    
+    this.omnivoreList = document
+      .querySelector(selectors.omnivoreSelector)
+
+
+
     this.template = document
       .querySelector(selectors.templateSelector)
     document
@@ -28,9 +61,63 @@ class App {
     }
   }
 
+  addCarnivoreList() {
+    //alert('Carnivore List!')
+    this.list.style.display = 'none'
+    this.herbivoreList.style.display = 'none'
+    this.omnivoreList.style.display = 'none'
+    this.carnivoreList.style.display = 'unset'
+  }
+
+  addHerbivoreList() {
+    //alert('addHerbivoreList')
+    this.list.style.display = 'none'
+    this.carnivoreList.style.display = 'none'   
+    this.omnivoreList.style.display = 'none'
+    this.herbivoreList.style.display = 'unset'
+  }
+
+  addOmnivoreList() {
+    //alert('addOmnivoreList')
+    this.list.style.display = 'none'
+    this.carnivoreList.style.display = 'none'
+    this.herbivoreList.style.display = 'none'
+    this.omnivoreList.style.display = 'unset'
+  }
+
+  addAllList() {
+    this.list.style.display = 'none'
+
+    this.carnivoreList.style.display = 'unset'
+    this.carnivoreList.parentElement.style.marginBottom = '2rem'
+
+    this.herbivoreList.style.display = 'unset'
+    this.herbivoreList.parentElement.style.marginBottom = '2rem'
+
+    this.omnivoreList.style.display = 'unset'
+    this.omnivoreList.parentElement.style.marginBottom = '2rem'
+
+  }
+
   addDino(dino) {
     const listItem = this.renderListItem(dino)
-    this.list.insertBefore(listItem, this.list.firstChild)
+    //this.list.insertBefore(listItem, this.list.firstChild)
+
+    if (dino.diet === 'carnivore') {
+      this.carnivoreDinos.unshift(dino)
+      this.carnivoreList.insertBefore(listItem, this.carnivoreList.firstChild)
+    } else if (dino.diet === 'herbivore') {
+      this.herbivoreDinos.unshift(dino)
+      this.herbivoreList.insertBefore(listItem, this.herbivoreList.firstChild)
+    } else if (dino.diet === 'omnivore') {
+      this.omnivoreDinos.unshift(dino)
+      this.omnivoreList.insertBefore(listItem, this.omnivoreList.firstChild)
+    } else {
+      this.list.insertBefore(listItem, this.list.firstChild)
+    }
+    
+
+    console.log(this.carnivoreDinos)
 
     this.dinos.unshift(dino)
     this.save()
@@ -210,5 +297,8 @@ class App {
 const app = new App({
   formSelector: '#dino-form',
   listSelector: '#dino-list',
+  carnivoreSelector: '#dino-carnivore',
+  herbivoreSelector: '#dino-herbivore',
+  omnivoreSelector: '#dino-omnivore',
   templateSelector: '.dino.template',
 })

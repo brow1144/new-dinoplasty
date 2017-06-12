@@ -11,9 +11,26 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <div class="row">
+      <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="dropdown menu" data-dropdown-menu>
+            <li class="menu-text">Dinoplasty</li>
+            <li><a class="carnivore-menu" href="#">Carnivore</a></li>
+            <li><a class="herbivore-menu" href="#">Herbivore</a></li>
+            <li><a class="omnivore-menu" href="#">Omnivore</a></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+          <ul class="menu">
+            <li><input type="search" placeholder="Search"></li>
+            <li><button type="button" class="button">Search</button></li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="row search">
       <div class="medium-8 medium-offset-2 column">
-        <h1>Dinoplasty</h1>
+        <!--<h1>Dinoplasty</h1>-->
         <form id="dino-form">
           <div class="row">
             <div class="small-5 column">
@@ -26,7 +43,7 @@
               >
             </div>
             <div class="small-4 column">
-              <select name="diet">
+              <select required name="diet">
                 <option value="">-- Diet --</option>
                 <option value="carnivore">Carnivore</option>
                 <option value="herbivore">Herbivore</option>
@@ -51,6 +68,28 @@
         <ul id="dino-list" class="no-bullet"></ul>
       </div>
     </div>
+
+
+
+    <div class="row">
+      <div class="medium-8 medium-offset-2 column">
+        <ul id="dino-carnivore" class="no-bullet"></ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-8 medium-offset-2 column">
+        <ul id="dino-herbivore" class="no-bullet"></ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="medium-8 medium-offset-2 column">
+        <ul id="dino-omnivore" class="no-bullet"></ul>
+      </div>
+    </div>
+
+
 
     <li class="dino template">
       <span class="dino-name"></span>

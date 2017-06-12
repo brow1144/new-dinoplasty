@@ -50,3 +50,11 @@
   color: #eee;
   cursor: not-allowed;
 }
+
+.row.search {
+  margin-top: 5rem;
+}
+
+.menu-text {
+  cursor: pointer;
+}
