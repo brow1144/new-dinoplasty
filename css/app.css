@@ -1,0 +1,52 @@
+.dino.template {
+  display: none;
+}
+
+.actions {
+  float: right;
+}
+
+.dino {
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  transition: 0.25s;
+}
+
+.dino + .dino {
+  border-top: none;
+}
+
+.dino-name {
+  flex-grow: 1;
+  margin-right: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dino-diet {
+  margin-right: 1rem;
+}
+
+.actions.button-group {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.actions .button {
+  padding: 0.65em 0.8em;
+}
+
+.dino.fav {
+  background-color: #ffc656;
+  border-color: #ffa807;
+}
+
+.dino:first-child .move-up,
+.dino:last-child .move-down {
+  background-color: #ddd;
+  color: #eee;
+  cursor: not-allowed;
+}
