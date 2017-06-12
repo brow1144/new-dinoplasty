@@ -89,36 +89,39 @@ class App {
     this.list.style.display = 'none'
 
     this.carnivoreList.style.display = 'unset'
-    this.carnivoreList.parentElement.style.marginBottom = '2rem'
+    this.carnivoreList.parentElement.style.marginBottom = '1rem'
 
     this.herbivoreList.style.display = 'unset'
-    this.herbivoreList.parentElement.style.marginBottom = '2rem'
+    this.herbivoreList.parentElement.style.marginBottom = '1rem'
 
     this.omnivoreList.style.display = 'unset'
-    this.omnivoreList.parentElement.style.marginBottom = '2rem'
+    this.omnivoreList.parentElement.style.marginBottom = '1rem'
 
   }
 
   addDino(dino) {
-    const listItem = this.renderListItem(dino)
-    //this.list.insertBefore(listItem, this.list.firstChild)
 
     if (dino.diet === 'carnivore') {
+      const listItem = this.renderListItem(dino, this.carnivoreList)
+
       this.carnivoreDinos.unshift(dino)
       this.carnivoreList.insertBefore(listItem, this.carnivoreList.firstChild)
     } else if (dino.diet === 'herbivore') {
+      const listItem = this.renderListItem(dino, this.herbivoreList)
+
       this.herbivoreDinos.unshift(dino)
       this.herbivoreList.insertBefore(listItem, this.herbivoreList.firstChild)
     } else if (dino.diet === 'omnivore') {
+      const listItem = this.renderListItem(dino, this.omnivoreList)
+
       this.omnivoreDinos.unshift(dino)
       this.omnivoreList.insertBefore(listItem, this.omnivoreList.firstChild)
     } else {
+      const listItem = this.renderListItem(dino, this.list)
+
       this.list.insertBefore(listItem, this.list.firstChild)
     }
     
-
-    console.log(this.carnivoreDinos)
-
     this.dinos.unshift(dino)
     this.save()
 
@@ -147,7 +150,7 @@ class App {
       .setItem('dinos', JSON.stringify(this.dinos))
   }
 
-  renderListItem(dino) {
+  renderListItem(dino, list) {
     const item = this.template.cloneNode(true)
     item.classList.remove('template')
     item.dataset.id = dino.id
@@ -184,10 +187,10 @@ class App {
       .addEventListener('click', this.favDino.bind(this, dino))
     item
       .querySelector('button.move-up')
-      .addEventListener('click', this.moveUp.bind(this, dino))
+      .addEventListener('click', this.moveUp.bind(this, dino, list))
     item
       .querySelector('button.move-down')
-      .addEventListener('click', this.moveDown.bind(this, dino))
+      .addEventListener('click', this.moveDown.bind(this, dino, list))
     item
       .querySelector('button.edit')
       .addEventListener('click', this.editDino.bind(this, dino))
@@ -231,7 +234,7 @@ class App {
     }
   }
 
-  moveDown(dino, ev) {
+  moveDown(dino, list, ev) {
     const listItem = ev.target.closest('.dino')
 
     const index = this.dinos.findIndex((currentDino, i) => {
@@ -239,7 +242,7 @@ class App {
     })
 
     if (index < this.dinos.length - 1) {
-      this.list.insertBefore(listItem.nextElementSibling, listItem)
+      list.insertBefore(listItem.nextElementSibling, listItem)
 
       const nextDino = this.dinos[index + 1]
       this.dinos[index + 1] = dino
@@ -248,7 +251,7 @@ class App {
     }
   }
 
-  moveUp(dino, ev) {
+  moveUp(dino, list, ev) {
     const listItem = ev.target.closest('.dino')
 
     const index = this.dinos.findIndex((currentDino, i) => {
@@ -256,7 +259,7 @@ class App {
     })
 
     if (index > 0) {
-      this.list.insertBefore(listItem, listItem.previousElementSibling)
+      list.insertBefore(listItem, listItem.previousElementSibling)
 
       const previousDino = this.dinos[index - 1]
       this.dinos[index - 1] = dino
