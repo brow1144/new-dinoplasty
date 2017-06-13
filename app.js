@@ -1,6 +1,5 @@
 /*
   TODO: Add some special style
-  TODO: Fix Border Problems
 */
 
 class App {
@@ -84,10 +83,15 @@ class App {
         }
       } 
       if (searchBar.value === '') {
-        var children = this.carnivoreList.childNodes;
-        for (var k = 0; k < children.length; k++) {
-          children[k].classList.remove('template')
+        // var children = this.carnivoreList.childNodes;
+        // for (var k = 0; k < children.length; k++) {
+        //   children[k].classList.remove('template')
+        // }
+        var children = this.carnivoreList.childNodes
+        for (var j = 0; j < children.length; j++) {
+          children[j].style.borderTop = 'none'
         }
+        children[0].style.border = '1px solid #ddd'
       }
     }
 
@@ -116,10 +120,11 @@ class App {
         }
       } 
       if (searchBar.value === '') {
-        var children = this.herbivoreList.childNodes;
-        for (var m = 0; m < children.length; m++) {
-          children[m].classList.remove('template')
+        let children = this.herbivoreList.childNodes;
+        for (var j = 0; j < children.length; j++) {
+          children[j].style.borderTop = 'none'
         }
+        children[0].style.border = '1px solid #ddd'
       }
     }
     
@@ -149,26 +154,6 @@ class App {
         }
       } 
       if (searchBar.value === '') {
-        var children = this.omnivoreList.childNodes;
-        for (var o = 0; o < children.length; o++) {
-          children[o].classList.remove('template')
-        }
-      }
-
-      if (searchBar.value === '') {
-        var children = this.carnivoreList.childNodes
-        for (var j = 0; j < children.length; j++) {
-          children[j].style.borderTop = 'none'
-        }
-        children[0].style.border = '1px solid #ddd'
-        
-
-        children = this.herbivoreList.childNodes;
-        for (var j = 0; j < children.length; j++) {
-          children[j].style.borderTop = 'none'
-        }
-        children[0].style.border = '1px solid #ddd'
-
         children = this.omnivoreList.childNodes;
         for (var j = 0; j < children.length; j++) {
           children[j].style.borderTop = 'none'
@@ -179,13 +164,10 @@ class App {
 
   load() {
     const carnivoreDinoJSON = localStorage.getItem('carnivoreDinos')
-
     const herbivoreDinoJSON = localStorage.getItem('herbivoreDinos')
-
     const omnivoreDinoJSON = localStorage.getItem('omnivoreDinos')
 
     const carnivoreDinoArray = JSON.parse(carnivoreDinoJSON)
-
     if (carnivoreDinoArray) {
       carnivoreDinoArray
         .reverse()
@@ -193,16 +175,13 @@ class App {
     }
 
     const herbivoreDinoArray = JSON.parse(herbivoreDinoJSON)
-
     if (herbivoreDinoArray) {
       herbivoreDinoArray
         .reverse()
         .map(this.addDino.bind(this))
     }
 
-
     const omnivoreDinoArray = JSON.parse(omnivoreDinoJSON)
-
     if (omnivoreDinoArray) {
       omnivoreDinoArray
         .reverse()
