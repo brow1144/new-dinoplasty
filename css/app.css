@@ -61,6 +61,7 @@ body {
 .dino:last-child .move-down {
   background-color: #ddd;
   color: #eee;
+  /*pointer-events: none;*/
   cursor: not-allowed;
 }
 
@@ -123,10 +124,6 @@ a:focus {
   color: #fefefe;
 }
 
-.button.alert:hover {
+/*.button.alert:hover {
   
-}
-
-/*.edit.button.fa-pencil-square-o {
-    
 }*/

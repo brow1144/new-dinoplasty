@@ -1,7 +1,3 @@
-/*
-  TODO: Add some special style
-*/
-
 class App {
   constructor(selectors) {
     this.dinos = []
