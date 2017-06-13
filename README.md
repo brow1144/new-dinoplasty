@@ -1,4 +1,4 @@
-## Day 5 Homework
+## Day 5 Homework (Completed!)
 
 Categorize stuff! Separate dino by diet, or era, or whatever! Make a whole new thing with categories, like messages separated into channels! Use your tremendous creativity! Exclamation point!
 
