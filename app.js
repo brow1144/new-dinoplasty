@@ -24,6 +24,9 @@ class App {
       .querySelector('.omnivore-menu')
       .addEventListener('click', this.addOmnivoreList.bind(this))
 
+    document
+      .querySelector('.searchBar')
+      .addEventListener('keyup', this.search.bind(this))
 
 
     this.carnivoreList = document
@@ -43,10 +46,107 @@ class App {
       .querySelector(selectors.formSelector)
       .addEventListener('submit', this.addDinoFromForm.bind(this))
 
-      //console.log(localStorage.getItem('herbivoreDinos'))
-
     this.load()
 
+  }
+
+  search(ev) {
+    const searchBar = document.querySelector('.searchBar')
+
+    let test = false;
+    
+    for (let i = 0; i < this.carnivoreDinos.length; i++) {
+      if (this.carnivoreDinos[i].name.includes(searchBar.value)) {
+        if (this.carnivoreList.hasChildNodes()) {
+          var children = this.carnivoreList.childNodes;
+          for (var j = 0; j < children.length; j++) {
+            if (!children[j].childNodes[1].textContent.includes(searchBar.value)) {
+              children[j].classList.add('template')
+              test = true;
+            } else {
+              children[j].classList.remove('template')
+              children[j].style.borderTop = '1px solid #ddd'
+              test = true;
+            }
+          }
+        }
+      }
+      if (test === false) {
+        var children = this.carnivoreList.childNodes;
+        for (var k = 0; k < children.length; k++) {
+          children[k].classList.add('template')
+        }
+      } 
+      if (searchBar.value === '') {
+        var children = this.carnivoreList.childNodes;
+        for (var k = 0; k < children.length; k++) {
+          children[k].classList.remove('template')
+        }
+        this.herbivoreList.style.marginTop = '1rem'
+      }
+    }
+
+    test = false
+    for (let i = 0; i < this.herbivoreDinos.length; i++) {
+      if (this.herbivoreDinos[i].name.includes(searchBar.value)) {
+        if (this.herbivoreList.hasChildNodes()) {
+          var children = this.herbivoreList.childNodes;
+          for (var j = 0; j < children.length; j++) {
+            if (!children[j].childNodes[1].textContent.includes(searchBar.value)) {
+              children[j].classList.add('template')
+              test = true
+            } else {
+              children[j].classList.remove('template')
+              children[j].style.borderTop = '1px solid #ddd'
+              test = true
+            }
+          }
+        }
+      } 
+      if (test === false) {
+        var children = this.herbivoreList.childNodes;
+        for (var l = 0; l < children.length; l++) {
+          children[l].classList.add('template')
+        }
+      } 
+      if (searchBar.value === '') {
+        var children = this.herbivoreList.childNodes;
+        for (var m = 0; m < children.length; m++) {
+          children[m].classList.remove('template')
+        }
+      }
+    }
+    
+    test = false
+    for (let i = 0; i < this.omnivoreDinos.length; i++) {
+      if (this.omnivoreDinos[i].name.includes(searchBar.value)) {
+        if (this.omnivoreList.hasChildNodes()) {
+          var children = this.omnivoreList.childNodes;
+          for (var j = 0; j < children.length; j++) {
+            if (!children[j].childNodes[1].textContent.includes(searchBar.value)) {
+              children[j].classList.add('template')
+              test = true
+            } else {
+              children[j].classList.remove('template')
+              children[j].style.borderTop = '1px solid #ddd'
+              test = true
+            }
+          }
+        }
+      } 
+    }
+    if (test === false) {
+        var children = this.omnivoreList.childNodes;
+        for (var n = 0; n < children.length; n++) {
+          children[n].classList.add('template')
+        }
+      } 
+      if (searchBar.value === '') {
+        var children = this.omnivoreList.childNodes;
+        for (var o = 0; o < children.length; o++) {
+          children[o].classList.remove('template')
+        }
+      }
   }
 
   load() {
@@ -147,7 +247,6 @@ class App {
       this.list.insertBefore(listItem, this.list.firstChild)
     }
     
-    this.dinos.unshift(dino)
     this.save()
 
     if (dino.id > this.max) {
@@ -171,16 +270,11 @@ class App {
   }
 
   save() {
-    // localStorage
-    //   .setItem('dinos', JSON.stringify(this.dinos))
-
     localStorage
       .setItem('carnivoreDinos', JSON.stringify(this.carnivoreDinos))
 
     localStorage
       .setItem('herbivoreDinos', JSON.stringify(this.herbivoreDinos))
-
-    //console.log(localStorage.getItem('herbivoreDinos'))
     
     localStorage
       .setItem('omnivoreDinos', JSON.stringify(this.omnivoreDinos))

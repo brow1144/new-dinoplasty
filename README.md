@@ -4,7 +4,7 @@ Categorize stuff! Separate dino by diet, or era, or whatever! Make a whole new t
 
 Or heck, just make separate lists based on the second input field you added in the weekend homework!
 
-### Super Mega Bonus Credit
+### Super Mega Bonus Credit (Completed!)
 
 Add a search field, and only show the results that match the search criteria. Here are some things you may wish to use while implementing search:
 
