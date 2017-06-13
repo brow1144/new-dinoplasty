@@ -229,7 +229,7 @@ class App {
       .addEventListener('click', this.moveDown.bind(this, dino, list, array))
     item
       .querySelector('button.edit')
-      .addEventListener('click', this.editDino.bind(this, dino, array))
+      .addEventListener('click', this.editDino.bind(this, dino))
 
     this.save()
 
