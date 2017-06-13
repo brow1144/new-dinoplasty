@@ -1,6 +1,5 @@
 /*
   TODO: Add some special style
-  TODO: Make search bar submit on enter
   TODO: Fix Border Problems
 */
 
@@ -157,19 +156,20 @@ class App {
       }
 
       if (searchBar.value === '') {
+        var children = this.carnivoreList.childNodes
         for (var j = 0; j < children.length; j++) {
           children[j].style.borderTop = 'none'
         }
         children[0].style.border = '1px solid #ddd'
         
 
-        var children = this.herbivoreList.childNodes;
+        children = this.herbivoreList.childNodes;
         for (var j = 0; j < children.length; j++) {
           children[j].style.borderTop = 'none'
         }
         children[0].style.border = '1px solid #ddd'
 
-        var children = this.omnivoreList.childNodes;
+        children = this.omnivoreList.childNodes;
         for (var j = 0; j < children.length; j++) {
           children[j].style.borderTop = 'none'
         }
