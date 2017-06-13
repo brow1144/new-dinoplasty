@@ -56,11 +56,11 @@ class App {
     let test = false;
     
     for (let i = 0; i < this.carnivoreDinos.length; i++) {
-      if (this.carnivoreDinos[i].name.includes(searchBar.value)) {
+      if (this.carnivoreDinos[i].name.toLowerCase().includes(searchBar.value.toLowerCase())) {
         if (this.carnivoreList.hasChildNodes()) {
           var children = this.carnivoreList.childNodes;
           for (var j = 0; j < children.length; j++) {
-            if (!children[j].childNodes[1].textContent.includes(searchBar.value)) {
+            if (!children[j].childNodes[1].textContent.toLowerCase().includes(searchBar.value.toLowerCase())) {
               children[j].classList.add('template')
               test = true;
             } else {
@@ -78,26 +78,15 @@ class App {
           children[k].classList.add('template')
         }
       } 
-      if (searchBar.value === '') {
-        // var children = this.carnivoreList.childNodes;
-        // for (var k = 0; k < children.length; k++) {
-        //   children[k].classList.remove('template')
-        // }
-        var children = this.carnivoreList.childNodes
-        for (var j = 0; j < children.length; j++) {
-          children[j].style.borderTop = 'none'
-        }
-        children[0].style.border = '1px solid #ddd'
-      }
     }
 
     test = false
     for (let i = 0; i < this.herbivoreDinos.length; i++) {
-      if (this.herbivoreDinos[i].name.includes(searchBar.value)) {
+      if (this.herbivoreDinos[i].name.toLowerCase().includes(searchBar.value.toLowerCase())) {
         if (this.herbivoreList.hasChildNodes()) {
           var children = this.herbivoreList.childNodes;
           for (var j = 0; j < children.length; j++) {
-            if (!children[j].childNodes[1].textContent.includes(searchBar.value)) {
+            if (!children[j].childNodes[1].textContent.toLowerCase().includes(searchBar.value.toLowerCase())) {
               children[j].classList.add('template')
               test = true
             } else {
@@ -115,22 +104,15 @@ class App {
           children[l].classList.add('template')
         }
       } 
-      if (searchBar.value === '') {
-        let children = this.herbivoreList.childNodes;
-        for (var j = 0; j < children.length; j++) {
-          children[j].style.borderTop = 'none'
-        }
-        children[0].style.border = '1px solid #ddd'
-      }
     }
     
     test = false
     for (let i = 0; i < this.omnivoreDinos.length; i++) {
-      if (this.omnivoreDinos[i].name.includes(searchBar.value)) {
+      if (this.omnivoreDinos[i].name.toLowerCase().includes(searchBar.value.toLowerCase())) {
         if (this.omnivoreList.hasChildNodes()) {
           var children = this.omnivoreList.childNodes;
           for (var j = 0; j < children.length; j++) {
-            if (!children[j].childNodes[1].textContent.includes(searchBar.value)) {
+            if (!children[j].childNodes[1].textContent.toLowerCase().includes(searchBar.value.toLowerCase())) {
               children[j].classList.add('template')
               test = true
             } else {
@@ -148,14 +130,25 @@ class App {
         for (var n = 0; n < children.length; n++) {
           children[n].classList.add('template')
         }
-      } 
-      if (searchBar.value === '') {
-        children = this.omnivoreList.childNodes;
-        for (var j = 0; j < children.length; j++) {
-          children[j].style.borderTop = 'none'
-        }
-        children[0].style.border = '1px solid #ddd'
+    } 
+    if(searchBar.value === '') {
+      var children = this.canrivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
       }
+
+      var children = this.herbivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      var children = this.omnivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      this.load()
+    }
   }
 
   load() {
@@ -402,10 +395,26 @@ class App {
       array[index] = nextDino
       this.save()
     }
-    document.querySelector('#dino-carnivore').style.border = '1px solid #ddd'
-    document.querySelector('#dino-herbivore').style.border = '1px solid #ddd'
-    document.querySelector('#dino-omnivore').style.border = '1px solid #ddd'
     this.save()
+
+    if(searchBar.value === '') {
+      var children = this.canrivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      var children = this.herbivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      var children = this.omnivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      this.load()
+    }
   }
 
   moveUp(dino, list, array, ev) {
@@ -424,9 +433,26 @@ class App {
 
       this.save()
     }
-    document.querySelector('#dino-carnivore').style.border = '1px solid #ddd'
-    document.querySelector('#dino-herbivore').style.border = '1px solid #ddd'
-    document.querySelector('#dino-omnivore').style.border = '1px solid #ddd'
+    
+    if(searchBar.value === '') {
+      var children = this.canrivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      var children = this.herbivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      var children = this.omnivoreList.childNodes;
+      for (var l = 0; l < children.length; l++) {
+        children[l].classList.add('template')
+      }
+
+      this.load()
+    }
+    
   }
 
   favDino(dino, ev) {
