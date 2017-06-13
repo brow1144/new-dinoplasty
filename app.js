@@ -191,25 +191,43 @@ class App {
 
   addCarnivoreList() {
     this.list.style.display = 'none'
-    this.herbivoreList.style.display = 'none'
-    this.omnivoreList.style.display = 'none'
     this.carnivoreList.style.display = 'unset'
+    document.querySelector('.carnivore-menu').classList.add('clicked')
+
+    this.herbivoreList.style.display = 'none'
+    document.querySelector('.herbivore-menu').classList.remove('clicked')
+
+    this.omnivoreList.style.display = 'none'
+    document.querySelector('.omnivore-menu').classList.remove('clicked')
+
     this.save()
   }
 
   addHerbivoreList() {
     this.list.style.display = 'none'
     this.carnivoreList.style.display = 'none'   
-    this.omnivoreList.style.display = 'none'
+    document.querySelector('.carnivore-menu').classList.remove('clicked')
+
     this.herbivoreList.style.display = 'unset'
+    document.querySelector('.herbivore-menu').classList.add('clicked')
+
+    this.omnivoreList.style.display = 'none'
+    document.querySelector('.omnivore-menu').classList.remove('clicked')
+    
     this.save()
   }
 
   addOmnivoreList() {
     this.list.style.display = 'none'
     this.carnivoreList.style.display = 'none'
+    document.querySelector('.carnivore-menu').classList.remove('clicked')
+
     this.herbivoreList.style.display = 'none'
+    document.querySelector('.herbivore-menu').classList.remove('clicked')
+
     this.omnivoreList.style.display = 'unset'
+    document.querySelector('.omnivore-menu').classList.add('clicked')
+
     this.save()
   }
 
@@ -218,12 +236,15 @@ class App {
 
     this.carnivoreList.style.display = 'unset'
     this.carnivoreList.parentElement.style.marginBottom = '1rem'
+    document.querySelector('.carnivore-menu').classList.remove('clicked')
 
     this.herbivoreList.style.display = 'unset'
     this.herbivoreList.parentElement.style.marginBottom = '1rem'
+    document.querySelector('.herbivore-menu').classList.remove('clicked')
 
     this.omnivoreList.style.display = 'unset'
     this.omnivoreList.parentElement.style.marginBottom = '1rem'
+    document.querySelector('.omnivore-menu').classList.remove('clicked')
 
     this.save()
   }

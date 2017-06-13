@@ -1,3 +1,15 @@
+/*
+#040D13
+#30CD9A
+#FFFFFF
+
+#2fc699
+*/
+
+body {
+  background: #ffffff;
+}
+
 .dino.template {
   display: none;
 }
@@ -11,6 +23,7 @@
   display: flex;
   align-items: center;
   padding: 0.75rem 1.25rem;
+   -webkit-transition: 0.25s;
   transition: 0.25s;
 }
 
@@ -52,9 +65,68 @@
 }
 
 .row.search {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .menu-text {
   cursor: pointer;
+  font-size: 3rem;
+  font-family: 'Love Ya Like A Sister', cursive;
 }
+
+a {
+  color: #2fc699;
+}
+
+a:hover {
+  -webkit-transition: background-color .3s linear;
+  transition: background-color .3s linear;
+  background-color: #d3d3d3;
+  border-radius: .4rem;
+  color: #2fc699;
+}
+
+a:focus {
+  color: #2fc699;
+}
+
+.searchButton {
+  background: #2fc699;
+}
+
+.searchButton:hover {
+  background: grey;
+}
+
+.searchButton:focus {
+  background: #2fc699;
+  outline: none;
+}
+
+.button.sucess {
+  background: #2fc699;  
+}
+
+.top-bar-right {
+  margin-top: .9rem;
+}
+
+.clicked {
+  -webkit-transition: background-color .3s ease;
+  transition: background-color .3s ease;
+  background-color: #d3d3d3;
+  border-radius: .4rem;
+}
+
+.button.alert {
+  background-color: #cc4b37;
+  color: #fefefe;
+}
+
+.button.alert:hover {
+  
+}
+
+/*.edit.button.fa-pencil-square-o {
+    
+}*/
