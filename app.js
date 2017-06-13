@@ -66,6 +66,7 @@ class App {
             } else {
               children[j].classList.remove('template')
               children[j].style.borderTop = '1px solid #ddd'
+              children[j].style.transition = 'none'
               test = true;
             }
           }
@@ -82,7 +83,7 @@ class App {
         for (var k = 0; k < children.length; k++) {
           children[k].classList.remove('template')
         }
-        this.herbivoreList.style.marginTop = '1rem'
+        //this.herbivoreList.style.marginTop = '1rem'
       }
     }
 
@@ -98,6 +99,7 @@ class App {
             } else {
               children[j].classList.remove('template')
               children[j].style.borderTop = '1px solid #ddd'
+              children[j].style.transition = 'none'
               test = true
             }
           }
@@ -129,6 +131,7 @@ class App {
             } else {
               children[j].classList.remove('template')
               children[j].style.borderTop = '1px solid #ddd'
+              children[j].style.transition = 'none'
               test = true
             }
           }
@@ -146,6 +149,24 @@ class App {
         for (var o = 0; o < children.length; o++) {
           children[o].classList.remove('template')
         }
+      }
+
+      if (searchBar.value === '') {
+        var children = this.carnivoreList.childNodes;
+        for (var j = 0; j < children.length; j++) {
+          children[j].style.borderTop = 'none'
+        }
+        children[0].style.border = '1px solid #ddd'
+        var children = this.herbivoreList.childNodes;
+        for (var j = 0; j < children.length; j++) {
+          children[j].style.borderTop = 'none'
+        }
+        children[0].style.border = '1px solid #ddd'
+        var children = this.omnivoreList.childNodes;
+        for (var j = 0; j < children.length; j++) {
+          children[j].style.borderTop = 'none'
+        }
+        children[0].style.border = '1px solid #ddd'
       }
   }
 
