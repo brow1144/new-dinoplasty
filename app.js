@@ -1,3 +1,9 @@
+/*
+  TODO: Add some special style
+  TODO: Make search bar submit on enter
+  TODO: Fix Border Problems
+*/
+
 class App {
   constructor(selectors) {
     this.dinos = []
@@ -83,7 +89,6 @@ class App {
         for (var k = 0; k < children.length; k++) {
           children[k].classList.remove('template')
         }
-        //this.herbivoreList.style.marginTop = '1rem'
       }
     }
 
@@ -152,16 +157,18 @@ class App {
       }
 
       if (searchBar.value === '') {
-        var children = this.carnivoreList.childNodes;
         for (var j = 0; j < children.length; j++) {
           children[j].style.borderTop = 'none'
         }
         children[0].style.border = '1px solid #ddd'
+        
+
         var children = this.herbivoreList.childNodes;
         for (var j = 0; j < children.length; j++) {
           children[j].style.borderTop = 'none'
         }
         children[0].style.border = '1px solid #ddd'
+
         var children = this.omnivoreList.childNodes;
         for (var j = 0; j < children.length; j++) {
           children[j].style.borderTop = 'none'
@@ -204,7 +211,6 @@ class App {
   }
 
   addCarnivoreList() {
-    //alert('Carnivore List!')
     this.list.style.display = 'none'
     this.herbivoreList.style.display = 'none'
     this.omnivoreList.style.display = 'none'
@@ -213,7 +219,6 @@ class App {
   }
 
   addHerbivoreList() {
-    //alert('addHerbivoreList')
     this.list.style.display = 'none'
     this.carnivoreList.style.display = 'none'   
     this.omnivoreList.style.display = 'none'
@@ -222,7 +227,6 @@ class App {
   }
 
   addOmnivoreList() {
-    //alert('addOmnivoreList')
     this.list.style.display = 'none'
     this.carnivoreList.style.display = 'none'
     this.herbivoreList.style.display = 'none'
@@ -367,14 +371,12 @@ class App {
     const icon = btn.querySelector('i.fa')
 
     if (nameField.isContentEditable) {
-      // make it no longer editable
       nameField.contentEditable = false
       dietField.contentEditable = false
       icon.classList.remove('fa-check')
       icon.classList.add('fa-pencil')
       btn.classList.remove('success')
 
-      // save changes
       dino.name = nameField.textContent
       dino.diet = dietField.textContent
       this.save()
@@ -404,6 +406,9 @@ class App {
       array[index] = nextDino
       this.save()
     }
+    document.querySelector('#dino-carnivore').style.border = '1px solid #ddd'
+    document.querySelector('#dino-herbivore').style.border = '1px solid #ddd'
+    document.querySelector('#dino-omnivore').style.border = '1px solid #ddd'
     this.save()
   }
 
@@ -423,7 +428,9 @@ class App {
 
       this.save()
     }
-    this.save()
+    document.querySelector('#dino-carnivore').style.border = '1px solid #ddd'
+    document.querySelector('#dino-herbivore').style.border = '1px solid #ddd'
+    document.querySelector('#dino-omnivore').style.border = '1px solid #ddd'
   }
 
   favDino(dino, ev) {
