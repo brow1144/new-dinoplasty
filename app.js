@@ -43,17 +43,40 @@ class App {
       .querySelector(selectors.formSelector)
       .addEventListener('submit', this.addDinoFromForm.bind(this))
 
+      //console.log(localStorage.getItem('herbivoreDinos'))
+
     this.load()
+
   }
 
   load() {
-    const dinoJSON = localStorage.getItem('dinos')
+    const carnivoreDinoJSON = localStorage.getItem('carnivoreDinos')
 
-    const dinoArray = JSON.parse(dinoJSON)
+    const herbivoreDinoJSON = localStorage.getItem('herbivoreDinos')
 
-    // set this.dinos with the dinos from that array
-    if (dinoArray) {
-      dinoArray
+    const omnivoreDinoJSON = localStorage.getItem('omnivoreDinos')
+
+    const carnivoreDinoArray = JSON.parse(carnivoreDinoJSON)
+
+    if (carnivoreDinoArray) {
+      carnivoreDinoArray
+        .reverse()
+        .map(this.addDino.bind(this))
+    }
+
+    const herbivoreDinoArray = JSON.parse(herbivoreDinoJSON)
+
+    if (herbivoreDinoArray) {
+      herbivoreDinoArray
+        .reverse()
+        .map(this.addDino.bind(this))
+    }
+
+
+    const omnivoreDinoArray = JSON.parse(omnivoreDinoJSON)
+
+    if (omnivoreDinoArray) {
+      omnivoreDinoArray
         .reverse()
         .map(this.addDino.bind(this))
     }
@@ -148,8 +171,19 @@ class App {
   }
 
   save() {
+    // localStorage
+    //   .setItem('dinos', JSON.stringify(this.dinos))
+
     localStorage
-      .setItem('dinos', JSON.stringify(this.dinos))
+      .setItem('carnivoreDinos', JSON.stringify(this.carnivoreDinos))
+
+    localStorage
+      .setItem('herbivoreDinos', JSON.stringify(this.herbivoreDinos))
+
+    //console.log(localStorage.getItem('herbivoreDinos'))
+    
+    localStorage
+      .setItem('omnivoreDinos', JSON.stringify(this.omnivoreDinos))
   }
 
   renderListItem(dino, list, array) {
@@ -183,7 +217,7 @@ class App {
 
     item
       .querySelector('button.remove')
-      .addEventListener('click', this.removeDino.bind(this))
+      .addEventListener('click', this.removeDino.bind(this, array))
     item
       .querySelector('button.fav')
       .addEventListener('click', this.favDino.bind(this, dino))
@@ -273,7 +307,6 @@ class App {
       array[index] = previousDino
 
       this.save()
-      debugger
     }
     this.save()
   }
@@ -291,14 +324,14 @@ class App {
     this.save()
   }
 
-  removeDino(ev) {
+  removeDino(array, ev) {
     const listItem = ev.target.closest('.dino')
     listItem.remove()
 
-    for (let i = 0; i < this.dinos.length; i++) {
-      const currentId = this.dinos[i].id.toString()
+    for (let i = 0; i < array.length; i++) {
+      const currentId = array[i].id.toString()
       if (listItem.dataset.id === currentId) {
-        this.dinos.splice(i, 1)
+        array.splice(i, 1)
         break;
       }
     }
